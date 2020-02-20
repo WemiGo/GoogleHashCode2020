@@ -20,9 +20,9 @@ if __name__ == "__main__":
     }[args.f]
 
     b, l, days = parser(reader(filename))
-    
+
     libs, s = solve(b, l, days, verbose=False)
 
     ans = libs_to_writer(libs, days)
-
-    writer(ans, f"{args.f}.txt")
+    print("ans", ans)
+    writer(ans, "test.txt")
