@@ -41,7 +41,7 @@ class Library():
         return self.score_each_day[-1]
 
     def set_max_value(self):
-        self.max_score = self.score_each_day[-1]
+        self.max_score = self.score_each_day[-1] / self.sign_time
 
 
 class Book():
