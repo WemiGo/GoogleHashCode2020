@@ -7,6 +7,10 @@ class Library():
         self.scan_cap = scanning_capacity
         self.is_sorted = False
         self.score_each_day = [0]
+    
+
+    def __hash__(self):
+        return hash(hash(self.id) + hash(self.sign_time))
 
     def __repr__(self):
         return f"<Library {[b.id for b in self.books]}>"
@@ -17,7 +21,7 @@ class Library():
             self.books = sorted(self.books, key=operator.attrgetter('value'), reverse=True)
             self.is_sorted = True
 
-    def score(self, days_left):
+    def score(self, days_left, void_books=set()):
         if len(self.score_each_day) > days_left:
             return self.score_each_day[max(days_left, 0)]
         self.sort_books()
@@ -29,7 +33,7 @@ class Library():
             for i in range(self.scan_cap):
                 if book_num >= len(self.books):
                     break
-                total_score += self.books[book_num].value
+                total_score += self.books[book_num].value if self.books[book_num].id not in void_books else 0
                 book_num += 1
             scores_to_add.append(total_score)
             days_done += 1
