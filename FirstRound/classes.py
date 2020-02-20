@@ -5,6 +5,9 @@ class Library():
         self.sign_time = signing_time
         self.scan_cap = scanning_capacity
 
+    def __repr__(self):
+        return f"<Library {[b.id for b in self.books]}>"
+
 class Book():
     def __init__(self, id, value):
         self.id = id
