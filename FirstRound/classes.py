@@ -35,6 +35,9 @@ class Library():
         self.score_each_day += scores_to_add
         return self.score_each_day[-1]
 
+    def set_max_value(self):
+        self.max_sore = self.score_each_day[-1]
+
 
 class Book():
     def __init__(self, id, value):
