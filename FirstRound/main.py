@@ -1,6 +1,6 @@
 import argparse
 
-from dataHandler import reader, parser
+from dataHandler import reader, parser, libs_to_writer
 from greedy import get_greedy
 
 if __name__ == "__main__":
@@ -21,4 +21,6 @@ if __name__ == "__main__":
     b, l, days = parser(reader(filename))
     print(f"Books \n{b}\nLibraries\n{l}")
     print("Before getting greedy")
-    get_greedy(l, days)
+    libs = get_greedy(l, days)
+    ans = libs_to_writer(libs, days)
+    print("ans", ans)
