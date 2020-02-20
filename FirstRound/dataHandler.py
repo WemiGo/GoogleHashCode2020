@@ -7,8 +7,9 @@ def parser(data):
         books.append(Book(_id, value))
 
     libraries = []
-    for lib in data['libs']:
+    for _id, lib in enumerate(data['libs']):
         libraries.append(Library(
+            _id,
             [books[i] for i in lib['books_held']],
             lib['signup_time'],
             lib['ship_rate'])

@@ -1,6 +1,7 @@
 
 class Library():
-    def __init__(self, books, signing_time, scanning_capacity):
+    def __init__(self, _id, books, signing_time, scanning_capacity):
+        self.id = _id
         self.books = books
         self.sign_time = signing_time
         self.scan_cap = scanning_capacity
