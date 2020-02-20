@@ -1,4 +1,4 @@
-
+from dataReader import reader
 
 if __name__ == "__main__":
-    print("Ready to start")
+    reader("data/a_example.txt")
