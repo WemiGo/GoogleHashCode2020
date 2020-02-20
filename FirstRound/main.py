@@ -19,3 +19,4 @@ if __name__ == "__main__":
 
     b, l = parser(reader(filename))
     print(f"Books \n{b}\nLibraries\n{l}")
+    print(l[0])
