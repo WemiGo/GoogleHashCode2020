@@ -24,5 +24,5 @@ if __name__ == "__main__":
     libs, s = solve(b, l, days, verbose=False)
 
     ans = libs_to_writer(libs, days)
-    print("ans", ans)
-    writer(ans, "test.txt")
+
+    writer(ans, f"solutions/{args.f}.txt")
