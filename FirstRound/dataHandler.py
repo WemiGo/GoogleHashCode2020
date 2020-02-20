@@ -1,3 +1,20 @@
+from classes import Library, Book
+
+def parser(data):
+
+    books = []
+    for _id, value in zip(range(data['total_books']), data['book_scores']):
+        books.append(Book(_id, value))
+    
+    libraries = []
+    for lib in data['libs']:
+        libraries.append(Library(
+            [books[i] for i in lib['books_held']],
+            lib['signup_time'],
+            lib['ship_rate'])
+        )
+    return books, libraries
+
 def reader(filename):
     f = open(filename, "r")
     res = dict()
