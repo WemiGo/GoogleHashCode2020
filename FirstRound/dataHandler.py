@@ -15,6 +15,29 @@ def parser(data):
         )
     return books, libraries
 
+def writer(data, filename):
+    # Data must be of this EXACT format
+    # data = {
+    #     'signed_libraries': 2, 
+    #     'libraries': [
+    #         {
+    #             'id': 1,
+    #             'num_books_sent': 3,
+    #             'books_sent': [5, 2, 3]
+    #         },
+    #         {
+    #             'id': 0,
+    #             'num_books_sent': 5,
+    #             'books_sent': [0, 1, 2, 3, 4]
+    #         }
+    #     ]
+    # }
+    with open(filename, 'w') as f:
+        f.write(str(data['signed_libraries']) + "\n")
+        for library in data['libraries']:
+            f.write(f"{library['id']} {library['num_books_sent']}\n")
+            f.write(str(library['books_sent'])[1:-1].replace(',', '') + "\n")
+
 def reader(filename):
     f = open(filename, "r")
     res = dict()
