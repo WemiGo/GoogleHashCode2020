@@ -1,6 +1,7 @@
 import argparse
 
-from dataHandler import reader, parser, libs_to_writer
+from backtrack import solve
+from dataHandler import reader, parser, libs_to_writer, writer
 from greedy import get_greedy
 
 if __name__ == "__main__":
@@ -19,8 +20,9 @@ if __name__ == "__main__":
     }[args.f]
 
     b, l, days = parser(reader(filename))
-    print(f"Books \n{b}\nLibraries\n{l}")
-    print("Before getting greedy")
-    libs = get_greedy(l, days)
+    
+    libs, s = solve(b, l, days, verbose=False)
+
     ans = libs_to_writer(libs, days)
-    print("ans", ans)
+
+    writer(ans, f"{args.f}.txt")
