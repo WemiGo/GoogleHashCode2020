@@ -38,11 +38,10 @@ def swap_books_greedily(libs_sol, all_libs, days, all_books, problem):
             # for lib in trial_sol:
             #     lib_possible.remove(lib)
             rand_id = random.randint(0, len(trial_sol)-1)
-            rand_lib = random.sample(all_libs, 1)
+            rand_lib = random.sample(all_libs, 1)[0]
             while rand_lib in trial_sol:
-                rand_lib = random.sample(all_libs, 1)
+                rand_lib = random.sample(all_libs, 1)[0]
             trial_sol.insert(rand_id, rand_lib)
-        print((trial_sol[0]))
         data = libs_to_writer(trial_sol, days)
         cur_score = score_libs(data, all_books)
         if cur_score > max_score:
