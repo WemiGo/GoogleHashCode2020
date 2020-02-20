@@ -26,7 +26,7 @@ def libs_to_writer(libs, days):
         days_left -= l.sign_time
         data["libraries"][i]["num_books_sent"] = l.scan_cap * days_left
         l.sort_books()
-        data["libraries"][i]["books_sent"] = [b.id for b in l.books[:(l.scan_cap * days_left)]]
+        data["libraries"][i]["books_sent"] = [b.id for b in l.books[:min(len(l.books), (l.scan_cap * days_left))]]
     return data
 
 
