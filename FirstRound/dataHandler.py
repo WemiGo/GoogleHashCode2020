@@ -5,7 +5,7 @@ def parser(data):
     books = []
     for _id, value in zip(range(data['total_books']), data['book_scores']):
         books.append(Book(_id, value))
-    
+
     libraries = []
     for lib in data['libs']:
         libraries.append(Library(
@@ -13,12 +13,12 @@ def parser(data):
             lib['signup_time'],
             lib['ship_rate'])
         )
-    return books, libraries
+    return books, libraries, data["days"]
 
 def writer(data, filename):
     # Data must be of this EXACT format
     # data = {
-    #     'signed_libraries': 2, 
+    #     'signed_libraries': 2,
     #     'libraries': [
     #         {
     #             'id': 1,
@@ -44,7 +44,7 @@ def reader(filename):
     l1 = f.readline().split()
     res["total_books"] = int(l1[0])
     res["num_lib"] = int(l1[1])
-    res["scanning_time"] = int(l1[2])
+    res["days"] = int(l1[2])
     res["book_scores"] = list(map(int,f.readline().split()))
     res["libs"] = [0] * res["num_lib"]
     for i in range(res["num_lib"]):

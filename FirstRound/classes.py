@@ -18,7 +18,7 @@ class Library():
 
     def score(self, days_left):
         if len(self.score_each_day) > days_left:
-            return self.score_each_day[days_left]
+            return self.score_each_day[max(days_left, 0)]
         self.sort_books()
         days_done = len(self.score_each_day) - 1
         scores_to_add = []
